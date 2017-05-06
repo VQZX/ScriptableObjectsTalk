@@ -20,7 +20,7 @@ namespace MGSATalk.Gameplay
         private void Initialize()
         {
             renderer = GetComponent<SpriteRenderer>();
-            renderer.sprite = template.Gardener;
+            renderer.sprite = template.Agent;
             if (GardenerInitialized != null)
             {
                 GardenerInitialized(template.Name);

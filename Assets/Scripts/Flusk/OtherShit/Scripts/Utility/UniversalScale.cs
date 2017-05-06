@@ -30,7 +30,6 @@ namespace MyNamespace
         private bool isDirty;
 
         [SerializeField]
-        [InspectorButton("Scale")]
         private bool newScale; 
         
         private void Update ()

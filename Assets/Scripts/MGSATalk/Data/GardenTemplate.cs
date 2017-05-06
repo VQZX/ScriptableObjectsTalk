@@ -2,7 +2,7 @@
 
 namespace MGSATalk.Data
 {
-    public class GardenTemplate : ScriptableObject
+    public class GardenTemplate : ScriptableObject, IGardenData
     {
 
     }

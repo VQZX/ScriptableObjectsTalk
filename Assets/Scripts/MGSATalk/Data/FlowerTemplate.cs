@@ -2,7 +2,8 @@
 
 namespace MGSATalk.Data
 {
-    public abstract class FlowerTemplate : ScriptableObject
+    [CreateAssetMenu(fileName = "Flower.asset", menuName = "MGSATalk/Flower", order = 1)]
+    public abstract class FlowerTemplate : AgentTemplate
     {
         public abstract void AcceptIngredients(Nutrient[] nutrients);
     }
