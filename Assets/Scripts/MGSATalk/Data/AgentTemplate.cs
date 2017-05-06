@@ -2,7 +2,7 @@
 
 namespace MGSATalk.Data
 {
-    public abstract class AgentTemplate : ScriptableObject, IGardenData
+    public class AgentTemplate : ScriptableObject, IGardenData
     {
         [SerializeField]
         protected int id;

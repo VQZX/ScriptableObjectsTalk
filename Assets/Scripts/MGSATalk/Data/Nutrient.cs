@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using MGSATalk.Gameplay;
+﻿using MGSATalk.Gameplay;
 using UnityEngine;
 
 namespace MGSATalk.Data
