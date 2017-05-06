@@ -1,0 +1,12 @@
+GAME!
+
+Garden Theme
+	Scriptable Objects
+		Gardeners (current gardener etc)
+		GardenerTemplate
+		FlowerTemplate
+		Nutrient
+
+	Other interesting things!
+	Nested prefab problem
+	Far easier play testing!
