@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace Flusk.Camera
+namespace Flusk.CameraHelper
 {
 	public class CameraFollow : MonoBehaviour
 	{
