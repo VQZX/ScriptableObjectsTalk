@@ -2,7 +2,7 @@
 using System;
 using UnityObject = UnityEngine.Object;
 
-namespace Flusk.Containers
+namespace Flusk.Containers2
 {
     [Serializable]
     public struct Dimension

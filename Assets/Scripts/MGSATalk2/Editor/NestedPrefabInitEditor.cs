@@ -16,7 +16,7 @@ namespace MGSATalk2.Editor
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
-            if (GUILayout.Button("Save Prefab structure")
+            if (GUILayout.Button("Save Prefab structure") )
             {
                 SavePrefabState();
             }
@@ -25,11 +25,7 @@ namespace MGSATalk2.Editor
         private void SavePrefabState()
         {
             //first assign components to any children that have children
-            int children = npi.transform.childCount;
-            for (int i = 0; i < children; i++)
-            {
-                
-            }
+            npi.Config();
         }
 
         ////////////////////////////
