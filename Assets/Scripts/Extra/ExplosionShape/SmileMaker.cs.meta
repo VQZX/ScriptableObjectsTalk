@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9c60fe7ee361a1943b5d56be1fc6ea1f
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - m_SmilePrefab: {fileID: 100000, guid: c6bc3f583d66b804ba6365e2fc0556bc, type: 2}
+  - m_SmileExplosionSmall: {fileID: 11400000, guid: b1e32f47ec702c742bdc4e980fa56cc1,
+      type: 2}
+  - m_SmileExplosionBig: {fileID: 11400000, guid: 6f94723e15d399544af1c32573c0cc20,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
