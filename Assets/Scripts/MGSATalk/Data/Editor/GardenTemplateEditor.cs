@@ -10,7 +10,6 @@ namespace MGSATalk.Data.Editor
         //private string directory = "";
         private GardenTemplate referenceShape;
 
-        private bool rowMajor;
         public override void OnInspectorGUI()
         {
             referenceShape = (GardenTemplate)target;
@@ -95,8 +94,6 @@ namespace MGSATalk.Data.Editor
             // Resize
             if ((newWidth != dungeon.Width) || (newHeight != dungeon.Height))
             {
-                rowMajor = newWidth != dungeon.Width;
-                Debug.Log("RowMajor: "+rowMajor);
                 bool[] newData1 = new bool[newWidth * newHeight];
                 int xMin = Mathf.Min(newWidth, dungeon.Width);
                 int yMin = Mathf.Min(newHeight, dungeon.Height);
@@ -104,7 +101,7 @@ namespace MGSATalk.Data.Editor
                 {
                     for (int y = 0; y < yMin; y++)
                     {
-                        int index = CalculateCurrentIndex(dungeon, x, y, rowMajor);
+                        int index = CalculateCurrentIndex(dungeon, x, y);
                         if (index >= dungeon.Count || index >= newData1.Length)
                         {
                             break;
@@ -133,7 +130,7 @@ namespace MGSATalk.Data.Editor
                 for (int y = 0; y < dungeon.Height; y++)
                 {
                     Rect layout = new Rect(position.x + margin * x, position.y + margin * y, xWidth, xWidth);
-                    CreateToggles(x, y, layout, rowMajor, ref dungeon);
+                    CreateToggles(x, y, layout, ref dungeon);
                 }
             }
 
@@ -145,26 +142,15 @@ namespace MGSATalk.Data.Editor
             return new Rect(saveOrig.x, saveOrig.y, saveOrig.width, EditorGUIUtility.singleLineHeight + (dungeon.Height * xWidth));
         }
 
-        private void CreateToggles(int x, int y, Rect layout, bool rowMajor, ref GardenTemplate dungeon)
+        private void CreateToggles(int x, int y, Rect layout, ref GardenTemplate dungeon)
         {
-            int index = CalculateCurrentIndex(dungeon, x, y, rowMajor);
+            int index = CalculateCurrentIndex(dungeon, x, y);
             dungeon[index] = EditorGUI.Toggle(layout, dungeon[index]);
         }
 
-        private int CalculateCurrentIndex(GardenTemplate shape, int x, int y, bool rowMajor = true)
+        private int CalculateCurrentIndex(GardenTemplate shape, int x, int y)
         {
-            int index = 0;
-            if (rowMajor)
-            {
-                //Debug.Log("index = x * shape.Height + y;");
-                index = x * shape.Height + y;
-            }
-            else
-            {
-                //Debug.Log("index = y * shape.Width + x;");
-                index = y * shape.Width + x;
-            }
-            return index;
+            return GardenTemplate.GetCorrectIndex(shape, x, y);
         }
     }
 }

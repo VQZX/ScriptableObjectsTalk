@@ -25,12 +25,12 @@ namespace MGSATalk.Gameplay
             {
                 for (int y = 0; y < height; y++)
                 {
-                    int index = x * height + y;
+                    int index = GardenTemplate.GetCorrectIndex(template, x, y);
                     if (!template[index])
                     {
                         continue;
                     }
-                    var pos = initPos + new Vector3( w * x, h * y);
+                    var pos = initPos + new Vector3( w * x, -h * y);
                     Create(pos, x, y);
                 }
             }

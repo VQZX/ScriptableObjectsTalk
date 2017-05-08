@@ -34,6 +34,11 @@ namespace MGSATalk.Data
             }
         }
 
+        public static int GetCorrectIndex(GardenTemplate template, int x, int y)
+        {
+            return x * template.Width + y;
+        }
+
         public void SetNewData(bool[] _data)
         {
             data = _data;
