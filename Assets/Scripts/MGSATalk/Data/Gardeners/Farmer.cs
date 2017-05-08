@@ -1,4 +1,5 @@
 ﻿using System;
+using MGSATalk.Data.Flowers;
 using MGSATalk.Gameplay;
 using UnityEngine;
 
@@ -9,7 +10,14 @@ namespace MGSATalk.Data.Gardeners
     {
         public override void TendFlower(GardenerController gardener, FlowerController flower)
         {
-            throw new NotImplementedException();
+            isTendingFlower = true;
+            if (flower.Template is Bamboo)
+            {
+                gardener.Refuse();
+                return;
+            }
+            gardener.AcceptTend();
+            flower.Tend();
         }
     }
 }

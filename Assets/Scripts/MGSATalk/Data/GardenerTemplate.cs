@@ -20,11 +20,13 @@ namespace MGSATalk.Data
             Vector3 current = controller.transform.position;
             current = Vector3.Lerp(current, goal, Time.deltaTime * speed);
             controller.transform.position = current;
-            bool close = Vector3.Distance(goal, current) < 0.1f;
-            if (close && !isTendingFlower)
+            float distance = Vector3.Distance(goal, current);
+            //Debug.Log("Distance: " + distance);
+            bool close = distance < 0.1f;
+            if (close)
             {
-                isTendingFlower = true;
                 TendFlower(controller, controller.CurrentFlower);
+                controller.CurrentFlower = null;
             }
         }
     }

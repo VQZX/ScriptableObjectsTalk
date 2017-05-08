@@ -11,17 +11,31 @@ namespace MGSATalk.Data.Flowers
             throw new System.NotImplementedException();
         }
 
-        public override void GardenerTendTo()
+        public override void Init(FlowerController controller)
         {
-            throw new System.NotImplementedException();
+            base.Init(controller);
+            controller.NextGoalSize = nextGoalSize;
         }
 
-        protected override void UpdateFlower(FlowerController control)
+        public override void GardenerTendTo(FlowerController controller)
         {
+            controller.NextGoalSize += incrementPercentage;
+        }
+
+        public override void UpdateFlower(FlowerController control)
+        {
+            if (!control.Growing)
+            {
+                return;
+            }
             Vector3 current = control.transform.localScale;
             Vector3 next = current;
-            next.y = nextGoalSize;
+            next.y = control.NextGoalSize;
             control.transform.localScale = Vector3.Lerp(current, next, Time.deltaTime * growthSpeed);
+            if (Vector3.Distance(current, next) < 0.01)
+            {
+                control.Growing = false;
+            }
         }
     }
 }

@@ -15,6 +15,9 @@ namespace MGSATalk.Gameplay
         }
         [SerializeField] protected new SpriteRenderer renderer;
 
+        public bool Growing { get; set; }
+        public float NextGoalSize { get; set; }
+
         public static event Action<FlowerController> Selected;
 
         public void Init(FlowerTemplate template = null)
@@ -36,6 +39,15 @@ namespace MGSATalk.Gameplay
             }
         }
 
+        protected virtual void Update()
+        {
+            template.UpdateFlower(this);
+        }
 
+        public void Tend()
+        {
+            template.GardenerTendTo(this);
+            Growing = true;
+        }
     }
 }

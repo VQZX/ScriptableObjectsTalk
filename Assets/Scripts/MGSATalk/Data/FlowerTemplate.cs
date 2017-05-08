@@ -20,9 +20,9 @@ namespace MGSATalk.Data
 
         public abstract void AcceptIngredients(Nutrient[] nutrients);
 
-        public abstract void GardenerTendTo();
+        public abstract void GardenerTendTo(FlowerController controller);
 
-        protected abstract void UpdateFlower(FlowerController controller);
+        public abstract void UpdateFlower(FlowerController controller);
 
         public virtual void Init(FlowerController controller)
         {

@@ -9,6 +9,7 @@ namespace MGSATalk.Gameplay
     {
         [SerializeField] protected GardenerTemplate template;
         [SerializeField] protected new SpriteRenderer renderer;
+        [SerializeField] protected new Animator animator;
 
         public static event Action<string> GardenerInitialized;
 
@@ -45,8 +46,21 @@ namespace MGSATalk.Gameplay
             template.Init(this);
         }
 
+        public void Refuse()
+        {
+            animator.SetBool("Refuse", true);
+        }
+
+        public void AcceptTend()
+        {
+            animator.SetBool("Work", true);
+        }
+
         private void OnFlowerSelected(FlowerController controller)
         {
+            animator.SetBool("Refuse", false);
+            animator.SetBool("Work", false);
+            Debug.Log("FlowerSelected "+controller.Template.GetType());
             CurrentFlower = controller;
         }
 
