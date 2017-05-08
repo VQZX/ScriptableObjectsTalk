@@ -14,6 +14,7 @@ namespace MGSATalk.Data
 
         public int Width { get; set; }
         public int Height { get; set; }
+        public int Count { get { return Width * Height; } }
         private bool[] data;
 
         public GardenTemplate(int width, int height, bool[] data)
@@ -31,6 +32,11 @@ namespace MGSATalk.Data
             {
                 data[i] = false;
             }
+        }
+
+        public void SetNewData(bool[] _data)
+        {
+            data = _data;
         }
 
         public void Generate(Vector3 origin, GameObject prefab)
