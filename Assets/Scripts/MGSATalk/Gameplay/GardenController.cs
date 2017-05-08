@@ -1,5 +1,4 @@
 ﻿using System;
-using Assets.Scripts.MGSATalk.Gameplay;
 using MGSATalk.Data;
 using UnityEngine;
 using UnityRandom = UnityEngine.Random;

@@ -1,5 +1,7 @@
-﻿using MGSATalk.Data;
+﻿using System;
+using MGSATalk.Data;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace MGSATalk.Gameplay
 {
@@ -13,6 +15,8 @@ namespace MGSATalk.Gameplay
         }
         [SerializeField] protected new SpriteRenderer renderer;
 
+        public static event Action<FlowerController> Selected;
+
         public void Init(FlowerTemplate template = null)
         {
             this.template = template;
@@ -22,5 +26,16 @@ namespace MGSATalk.Gameplay
                 template.Init(this);
             }
         }
+
+        public void PointerClick()
+        {
+            Debug.Log("OnPointerClick");
+            if (Selected != null)
+            {
+                Selected(this);
+            }
+        }
+
+
     }
 }

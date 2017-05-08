@@ -12,6 +12,26 @@ namespace MGSATalk.Gameplay
 
         public static event Action<string> GardenerInitialized;
 
+        public FlowerController CurrentFlower { get; set; }
+
+        protected virtual void OnEnable()
+        {
+            FlowerController.Selected += OnFlowerSelected;
+        }
+
+        protected virtual void OnDisable()
+        {
+            FlowerController.Selected -= OnFlowerSelected;
+        }
+
+        protected virtual void Update()
+        {
+            if (CurrentFlower == null)
+            {
+                return;
+            }
+            template.UpdateGardener(this);
+        }
 
         public void Initialize(GardenerTemplate template)
         {
@@ -23,6 +43,11 @@ namespace MGSATalk.Gameplay
                 GardenerInitialized(template.Name);
             }
             template.Init(this);
+        }
+
+        private void OnFlowerSelected(FlowerController controller)
+        {
+            CurrentFlower = controller;
         }
 
     }

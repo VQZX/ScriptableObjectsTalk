@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
-namespace Assets.Scripts.MGSATalk.Gameplay
+namespace MGSATalk.Gameplay
 {
-    public class GardenPiece : MonoBehaviour
+    public class GardenPiece : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
     {
         [SerializeField]
         protected SpriteRenderer spriteRender;
@@ -16,6 +13,23 @@ namespace Assets.Scripts.MGSATalk.Gameplay
         public Bounds GetBounds()
         {
             return spriteRender.bounds;
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            var flower = GetComponentInChildren<FlowerController>();
+            if (flower != null)
+            {
+                flower.PointerClick(); ;
+            }
+        }
+
+        public void OnPointerDown(PointerEventData eventData)
+        {
+        }
+
+        public void OnPointerUp(PointerEventData eventData)
+        {
         }
     }
 }
