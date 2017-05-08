@@ -10,6 +10,7 @@ namespace MGSATalk.Data.Editor
         //private string directory = "";
         private GardenTemplate referenceShape;
 
+        private bool rowMajor;
         public override void OnInspectorGUI()
         {
             referenceShape = (GardenTemplate)target;
@@ -92,8 +93,10 @@ namespace MGSATalk.Data.Editor
             position.y += EditorGUIUtility.singleLineHeight;
 
             // Resize
-            //if ((newWidth != dungeon.Width) || (newHeight != dungeon.Height))
+            if ((newWidth != dungeon.Width) || (newHeight != dungeon.Height))
             {
+                rowMajor = newWidth != dungeon.Width;
+                Debug.Log("RowMajor: "+rowMajor);
                 bool[] newData1 = new bool[newWidth * newHeight];
                 int xMin = Mathf.Min(newWidth, dungeon.Width);
                 int yMin = Mathf.Min(newHeight, dungeon.Height);
@@ -101,17 +104,12 @@ namespace MGSATalk.Data.Editor
                 {
                     for (int y = 0; y < yMin; y++)
                     {
-                        int index = CalculateCurrentIndex(dungeon, x, y);
+                        int index = CalculateCurrentIndex(dungeon, x, y, rowMajor);
                         if (index >= dungeon.Count || index >= newData1.Length)
                         {
                             break;
                         }
                         newData1[index] = dungeon[index];
-                    }
-                    int value = CalculateCurrentIndex(dungeon, x, 0);
-                    if (value >= dungeon.Count || value >= newData1.Length)
-                    {
-                        break;
                     }
                 }
 
@@ -135,7 +133,7 @@ namespace MGSATalk.Data.Editor
                 for (int y = 0; y < dungeon.Height; y++)
                 {
                     Rect layout = new Rect(position.x + margin * x, position.y + margin * y, xWidth, xWidth);
-                    CreateToggles(x, y, layout, ref dungeon);
+                    CreateToggles(x, y, layout, rowMajor, ref dungeon);
                 }
             }
 
@@ -147,15 +145,25 @@ namespace MGSATalk.Data.Editor
             return new Rect(saveOrig.x, saveOrig.y, saveOrig.width, EditorGUIUtility.singleLineHeight + (dungeon.Height * xWidth));
         }
 
-        private void CreateToggles(int x, int y, Rect layout, ref GardenTemplate dungeon)
+        private void CreateToggles(int x, int y, Rect layout, bool rowMajor, ref GardenTemplate dungeon)
         {
-            int index = CalculateCurrentIndex(dungeon, x, y);
+            int index = CalculateCurrentIndex(dungeon, x, y, rowMajor);
             dungeon[index] = EditorGUI.Toggle(layout, dungeon[index]);
         }
 
-        private int CalculateCurrentIndex(GardenTemplate shape, int x, int y)
+        private int CalculateCurrentIndex(GardenTemplate shape, int x, int y, bool rowMajor = true)
         {
-            int index = x * shape.Height + y;
+            int index = 0;
+            if (rowMajor)
+            {
+                //Debug.Log("index = x * shape.Height + y;");
+                index = x * shape.Height + y;
+            }
+            else
+            {
+                //Debug.Log("index = y * shape.Width + x;");
+                index = y * shape.Width + x;
+            }
             return index;
         }
     }
