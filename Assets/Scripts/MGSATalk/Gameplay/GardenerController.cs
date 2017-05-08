@@ -12,19 +12,17 @@ namespace MGSATalk.Gameplay
 
         public static event Action<string> GardenerInitialized;
 
-        protected virtual void Awake()
-        {
-            Initialize();
-        }
 
-        private void Initialize()
+        public void Initialize(GardenerTemplate template)
         {
             renderer = GetComponent<SpriteRenderer>();
             renderer.sprite = template.Agent;
+            this.template = template;
             if (GardenerInitialized != null)
             {
                 GardenerInitialized(template.Name);
             }
+            template.Init(this);
         }
 
     }

@@ -48,8 +48,6 @@ namespace Flusk.GraphicHelper
             if (!Application.isPlaying)
             {
                 return;
-                isDirty = true;
-                ChangeColor();
             } 
 #endif
         }

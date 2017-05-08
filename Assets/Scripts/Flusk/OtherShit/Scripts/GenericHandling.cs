@@ -97,7 +97,7 @@ namespace Flusk.Utilities
         //TODO: shouldn't be here because this isn't generci
         public static float MaxSelectionFromArray<T> ( this float [] array, params int [] indices )
         {
-            List<float> selection = new List<float>();
+            //List<float> selection = new List<float>();
             float currentMax = -Mathf.Infinity;
             for ( int i = 0; i < indices.Length; i++ )
             {
@@ -114,7 +114,7 @@ namespace Flusk.Utilities
 
         public static float MaxSelectionFromArray(this float[] array, int[] indices)
         {
-            List<float> selection = new List<float>();
+            ///List<float> selection = new List<float>();
             float currentMax = -Mathf.Infinity;
             for (int i = 0; i < indices.Length; i++)
             {

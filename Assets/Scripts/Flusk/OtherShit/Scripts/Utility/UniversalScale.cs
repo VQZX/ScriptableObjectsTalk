@@ -23,14 +23,19 @@ namespace MyNamespace
             }
         }
 
-        [SerializeField]
-        [ReadOnly]
-        private Vector3 scale;
+        //[SerializeField]
+        //[ReadOnly]
+        private Vector3 scale = Vector3.zero;
 
         private bool isDirty;
 
         [SerializeField]
-        private bool newScale; 
+        private bool newScale;
+
+        public void Log()
+        {
+            Debug.Log(scale * 3);
+        }
         
         private void Update ()
         {

@@ -11,7 +11,7 @@ namespace Assets.Scripts.MGSATalk.Gameplay
         [SerializeField]
         protected SpriteRenderer spriteRender;
         [SerializeField]
-        protected Collider2D collider2D;
+        protected new Collider2D collider2D;
 
         public Bounds GetBounds()
         {

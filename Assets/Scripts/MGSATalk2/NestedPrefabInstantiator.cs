@@ -11,17 +11,22 @@ namespace MGSATalk2
         [SerializeField] protected NestedPrefab nest;
         private bool initialized = false;
 
-        private string DEFAULT_NAME = "Prefab";
+        //private string DEFAULT_NAME = "Prefab";
 
         public void Config()
         {
+            initialized = true;
+            if (initialized)
+            {
+                
+            }
             int children = transform.childCount;
             for (int i = 0; i < children; i++)
             {
                 var current = transform.GetChild(i);
                 var npi = current.gameObject.AddComponent<NestedPrefabInstantiator>();
                 npi.Config();
-                string fileTitle = string.Format("{0}_{1}", gameObject.name, DEFAULT_NAME);
+                //string fileTitle = string.Format("{0}_{1}", gameObject.name, DEFAULT_NAME);
                 //nest = DataUtility.GetAsset<NestedPrefab>(fileTitle);
             }
         }

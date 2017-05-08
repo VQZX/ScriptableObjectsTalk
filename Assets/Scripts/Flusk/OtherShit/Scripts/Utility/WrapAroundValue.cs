@@ -70,13 +70,15 @@ namespace Flusk.Utility
         private float min;
         private float max;
 
-        private Action OnWrapUp;
-        private Action OnWrapDown;
+        private readonly Action OnWrapUp;
+        private readonly Action OnWrapDown;
 
-        public WrapAroundValue (float min, float max )
+        public WrapAroundValue (float min, float max, Action onWrapUp, Action onWrapDown)
         {
             this.min = min;
             this.max = max;
+            OnWrapUp = onWrapUp;
+            OnWrapDown = onWrapDown;
         }
     } 
 }

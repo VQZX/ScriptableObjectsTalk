@@ -2,6 +2,7 @@
 using Assets.Scripts.MGSATalk.Gameplay;
 using MGSATalk.Data;
 using UnityEngine;
+using UnityRandom = UnityEngine.Random;
 
 namespace MGSATalk.Gameplay
 {
@@ -9,6 +10,10 @@ namespace MGSATalk.Gameplay
     {
         [SerializeField] public GardenTemplate template;
         [SerializeField] protected GameObject gardenPiece;
+        [SerializeField] protected FlowerTemplate[] flowers;
+        [SerializeField] protected GameObject flowerPiece;
+        [SerializeField] protected GardenerTemplate gardenerTemplate;
+        [SerializeField] protected GameObject gardener;
 
         public static Action GardenInitialized;
 
@@ -31,9 +36,14 @@ namespace MGSATalk.Gameplay
                         continue;
                     }
                     var pos = initPos + new Vector3( w * x, -h * y);
-                    Create(pos, x, y);
+                    var gpiece = Create(pos, x, y);
+                    var flower  = CreateFlower(pos, gpiece);
+                    var flowerControl = flower.GetComponent<FlowerController>();
+                    FlowerTemplate flowerTemp = flowers[UnityRandom.Range(0, flowers.Length)];
+                    flowerControl.Init(flowerTemp);
                 }
             }
+            CreateGardener(transform.position);
         }
 
         private GameObject Create(Vector3 pos, int x, int y)
@@ -42,6 +52,23 @@ namespace MGSATalk.Gameplay
             g.transform.SetParent(transform);
             g.name += string.Format("({0}, {1})", x, y);
             return g;
+        }
+
+        private GameObject CreateFlower(Vector3 pos, GameObject parent)
+        {
+            var flower = (GameObject) Instantiate(flowerPiece.gameObject);
+            flower.transform.SetParent(parent.transform);
+            flower.transform.localPosition = Vector3.zero;
+            return flower;
+        }
+
+        private GameObject CreateGardener(Vector3 pos)
+        {
+            var gardener = Instantiate(this.gardener);
+            gardener.transform.position = pos;
+            var controller = gardener.GetComponent<GardenerController>();
+            controller.Initialize(gardenerTemplate);
+            return gardener;
         }
     }
 }

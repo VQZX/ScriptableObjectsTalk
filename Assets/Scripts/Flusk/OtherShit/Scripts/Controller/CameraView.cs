@@ -16,7 +16,7 @@ namespace Flusk.Utilities
             }
         }
 
-        private Vector3 previousPosition;
+        private Vector3 previousPosition = Vector3.zero;
 
 
         private void Update ()

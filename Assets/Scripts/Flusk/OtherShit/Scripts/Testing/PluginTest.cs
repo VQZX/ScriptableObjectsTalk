@@ -45,8 +45,8 @@ namespace Flusk.PluginTest
 
             Debug.Log(StringReturnValueFunction());
 
-            var texture = new Texture2D(0, 0, TextureFormat.ARGB32, false);
-            BindWebGLTexture(texture.GetNativeTextureID());
+            //var texture = new Texture2D(0, 0, TextureFormat.ARGB32, false);
+            //BindWebGLTexture(texture.GetNativeTextureID());
         }
 
     }

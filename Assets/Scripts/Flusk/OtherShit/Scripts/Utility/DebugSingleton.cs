@@ -30,7 +30,7 @@ namespace Flusk.Helpers
 
     public class DebugSingleton : PersistentSingleton<DebugSingleton>
     {
-        private Color defaultColor;
+        private Color defaultColor = Color.black;
 
         public Color DefaultColor
         {
