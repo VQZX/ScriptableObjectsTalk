@@ -15,6 +15,7 @@ namespace MGSATalk.Data
         public int Width { get; set; }
         public int Height { get; set; }
         public int Count { get { return Width * Height; } }
+        [SerializeField]
         private bool[] data;
 
         public GardenTemplate(int width, int height, bool[] data)
