@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿#if OLD_CODE
+
+using UnityEngine;
 using System.Collections;
 using System;
 using Flusk.Utility;
-#if OLDCODE
+
 namespace Honours.LowEconomy.Data
 {
     /*
