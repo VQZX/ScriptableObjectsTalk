@@ -2,25 +2,29 @@
 
 namespace MGSATalk.Data
 {
+    /// <summary>
+    /// Base class for Gardeners and Flowers 
+    /// </summary>
     public class AgentTemplate : ScriptableObject, IGardenData
     {
-        [SerializeField]
-        protected int id;
+        /// <summary>
+        /// common data
+        /// </summary>
+
+        public int id;
         public int ID
         {
             get { return id; }
         }
 
-        [SerializeField]
-        protected string agentName;
+        public string agentName;
 
         public string Name
         {
             get { return agentName; }
         }
 
-        [SerializeField]
-        protected Sprite agentImage;
+        public Sprite agentImage;
 
         public Sprite Agent
         {

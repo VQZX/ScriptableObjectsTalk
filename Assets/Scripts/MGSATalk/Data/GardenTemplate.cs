@@ -3,18 +3,40 @@ using UnityEngine;
 
 namespace MGSATalk.Data
 {
+    //HERE BE DRAGONS!
+    /// <summary>
+    /// Garden Template for creating a map
+    /// </summary>
+    ///
+    /// CreateAssetMenu
+    /// Attribute to make it easier to create this specific type of object
+    /// filename: The default file name for the asset
+    /// menuName: The order within the create menu
+    /// order: positioning within the create menu
     [CreateAssetMenu(fileName = "Garden.asset", menuName = "MGSATalk/Garden/Garden", order = 1)]
     public class GardenTemplate : ScriptableObject, IGardenData
     {
+
+        /// <summary>
+        /// Easy access to GardenTemplate
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public bool this[int index]
         {
             get { return data[index]; }
             set { data[index] = value; }
         }
 
+        /// <summary>
+        /// Maps are square for the moment,
+        /// so a a regular width and height
+        /// </summary>
         public int Width { get; set; }
         public int Height { get; set; }
         public int Count { get { return Width * Height; } }
+
+        //the data that holds the positions of the garden pieces
         private bool[] data;
 
         public GardenTemplate(int width, int height, bool[] data)
@@ -24,16 +46,16 @@ namespace MGSATalk.Data
 
         public GardenTemplate()
         {
-            Width = 20;
-            Height = 20;
-            data = new bool[Width * Height];
 
-            for (int i = 0; i < Width * Height; i++)
-            {
-                data[i] = false;
-            }
         }
 
+        /// <summary>
+        /// A function to help with the two-dimensional array
+        /// </summary>
+        /// <param name="template"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
         public static int GetCorrectIndex(GardenTemplate template, int x, int y)
         {
             return x * template.Width + y;
