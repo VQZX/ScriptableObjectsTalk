@@ -1,53 +1,49 @@
 ﻿using System;
-using MGSATalk.Data;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace MGSATalk.Gameplay
+public class FlowerController : MonoBehaviour
 {
-    public class FlowerController : MonoBehaviour
+    [SerializeField] protected FlowerTemplate template;
+    public FlowerTemplate Template
     {
-        [SerializeField] protected FlowerTemplate template;
-        public FlowerTemplate Template
+        get { return template; }
+        set { template = value; }
+    }
+    [SerializeField] protected new SpriteRenderer renderer;
+
+    public bool Growing { get; set; }
+    public float NextGoalSize { get; set; }
+
+    public static event Action<FlowerController> Selected;
+
+    public void Init(FlowerTemplate template = null)
+    {
+        this.template = template;
+        renderer.sprite = template.Agent;
+        if (template != null)
         {
-            get { return template; }
-            set { template = value; }
+            template.Init(this);
         }
-        [SerializeField] protected new SpriteRenderer renderer;
+    }
 
-        public bool Growing { get; set; }
-        public float NextGoalSize { get; set; }
-
-        public static event Action<FlowerController> Selected;
-
-        public void Init(FlowerTemplate template = null)
+    public void PointerClick()
+    {
+        Debug.Log("OnPointerClick");
+        if (Selected != null)
         {
-            this.template = template;
-            renderer.sprite = template.Agent;
-            if (template != null)
-            {
-                template.Init(this);
-            }
+            Selected(this);
         }
+    }
 
-        public void PointerClick()
-        {
-            Debug.Log("OnPointerClick");
-            if (Selected != null)
-            {
-                Selected(this);
-            }
-        }
+    protected virtual void Update()
+    {
+        template.UpdateFlower(this);
+    }
 
-        protected virtual void Update()
-        {
-            template.UpdateFlower(this);
-        }
-
-        public void Tend()
-        {
-            Growing = true;
-            template.GardenerTendTo(this);
-        }
+    public void Tend()
+    {
+        Growing = true;
+        template.GardenerTendTo(this);
     }
 }

@@ -1,5 +1,4 @@
-﻿using MGSATalk.Gameplay;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace MGSATalk
 {

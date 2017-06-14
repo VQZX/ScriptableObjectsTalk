@@ -1,9 +1,6 @@
 ﻿using UnityEngine;
 
-namespace MGSATalk.Gameplay
+public class Controller : MonoBehaviour
 {
-    public class Controller : MonoBehaviour
-    {
 
-    }
 }
