@@ -2,7 +2,7 @@
 using MGSATalk.Gameplay;
 using UnityEngine;
 
-namespace MGSATalk.Data.Gardeners
+namespace MGSATalk
 {
     /// <summary>
     /// LumberJane inherits from GardenerTemplate

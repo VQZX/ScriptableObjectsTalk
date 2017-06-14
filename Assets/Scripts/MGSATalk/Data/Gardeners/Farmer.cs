@@ -1,9 +1,8 @@
-﻿using System;
-using MGSATalk.Data.Flowers;
+﻿using MGSATalk.Data.Flowers;
 using MGSATalk.Gameplay;
 using UnityEngine;
 
-namespace MGSATalk.Data.Gardeners
+namespace MGSATalk
 {
     /// <summary>
     /// Farmer inherits from GardenerTemplate
