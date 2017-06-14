@@ -1,7 +1,4 @@
-﻿namespace MGSATalk.Data
+﻿public interface IGardenData
 {
-    public interface IGardenData
-    {
         
-    }
 }

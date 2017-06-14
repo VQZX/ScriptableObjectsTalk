@@ -1,34 +1,31 @@
 ﻿using UnityEngine;
 
-namespace MGSATalk.Data
+/// <summary>
+/// Base class for Gardeners and Flowers 
+/// </summary>
+public class AgentTemplate : ScriptableObject, IGardenData
 {
     /// <summary>
-    /// Base class for Gardeners and Flowers 
+    /// common data
     /// </summary>
-    public class AgentTemplate : ScriptableObject, IGardenData
+
+    public int id;
+    public int ID
     {
-        /// <summary>
-        /// common data
-        /// </summary>
+        get { return id; }
+    }
 
-        public int id;
-        public int ID
-        {
-            get { return id; }
-        }
+    public string agentName;
 
-        public string agentName;
+    public string Name
+    {
+        get { return agentName; }
+    }
 
-        public string Name
-        {
-            get { return agentName; }
-        }
+    public Sprite agentImage;
 
-        public Sprite agentImage;
-
-        public Sprite Agent
-        {
-            get { return agentImage; }
-        }
+    public Sprite Agent
+    {
+        get { return agentImage; }
     }
 }
