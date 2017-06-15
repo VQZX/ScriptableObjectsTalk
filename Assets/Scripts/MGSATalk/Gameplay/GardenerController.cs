@@ -6,7 +6,7 @@ public class GardenerController : MonoBehaviour
 {
     public GardenerTemplate Template;
     
-    public new SpriteRenderer Renderer;
+    public SpriteRenderer Renderer;
     
     public Animator Animator;
 
@@ -48,7 +48,7 @@ public class GardenerController : MonoBehaviour
     {
         Renderer = GetComponent<SpriteRenderer>();
         Renderer.sprite = template.AgentImage;
-        this.Template = template;
+        Template = template;
         if (GardenerInitialized != null)
         {
             GardenerInitialized(template.AgentName);
