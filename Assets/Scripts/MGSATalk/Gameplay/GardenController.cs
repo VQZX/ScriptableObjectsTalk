@@ -4,14 +4,11 @@ using Random = UnityEngine.Random;
 
 public class GardenController : Controller
 {
-    [SerializeField] public GardenTemplate template;
-    [SerializeField] public GameObject gardenPiece;
-    [SerializeField] public FlowerTemplate[] flowers;
-    [SerializeField]
+    public GardenTemplate template;
+    public GameObject gardenPiece;
+    public FlowerTemplate[] flowers;
     public GameObject flowerPiece;
-    [SerializeField]
     public GardenerTemplate gardenerTemplate;
-    [SerializeField]
     public GameObject gardener;
 
     public static Action GardenInitialized;

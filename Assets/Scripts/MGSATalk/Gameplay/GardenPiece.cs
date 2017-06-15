@@ -7,14 +7,13 @@ using UnityEngine.EventSystems;
 /// </summary>
 public class GardenPiece : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
 {
-    [SerializeField]
-    public SpriteRenderer spriteRender;
-    [SerializeField]
-    public new Collider2D collider2D;
+    public SpriteRenderer SpriteRenderer;
+
+    public Collider2D Collider2D;
 
     public Bounds GetBounds()
     {
-        return spriteRender.bounds;
+        return SpriteRenderer.bounds;
     }
 
     /// <summary>

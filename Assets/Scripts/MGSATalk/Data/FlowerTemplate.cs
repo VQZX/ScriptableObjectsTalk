@@ -4,7 +4,7 @@
 /// Base class for flower data
 /// </summary>
 ///
-/// Attribute to make it easier to create this specific type of object
+/// Attribute to make it easier to create this specific Type of object
 /// filename: The default file name for the asset
 /// menuName: The order within the create menu
 /// order: positioning within the create menu
@@ -12,26 +12,24 @@
 public abstract class FlowerTemplate : AgentTemplate
 {
     /// <summary>
-    /// a string type for ease of type checking
+    /// a string Type for ease of Type checking
     /// </summary>
-    [SerializeField] public string type;
+    public string Type;
 
-    public string Type
-    {
-        get { return type; }
-    }
 
     /// <summary>
-    /// The speed at which the flower grows every frame
+    /// The Speed at which the flower grows every frame
     /// </summary>
-    [SerializeField] public float growthSpeed = 1;
+    public float GrowthSpeed = 1;
+    
     /// <summary>
     /// The next level the flower will grow to when the gardener tends to it
     /// </summary>
-    [SerializeField] public float incrementPercentage = 0.3f;
+    public float IncrementPercentage = 0.3f;
 
-    public float nextGoalSize;
+    public float NextGoalSize;
 
+    //TODO: remove abstracts
     /// <summary>
     /// Initialisation for when the gardener tends to the flower
     /// Only exists to be inherited, thus the function is abstract
@@ -39,6 +37,7 @@ public abstract class FlowerTemplate : AgentTemplate
     /// <param name="controller"></param>
     public abstract void GardenerTendTo(FlowerController controller);
 
+    //TODO: remove abstracts
     /// <summary>
     /// The continuous response of the flower once it has been tended to
     /// </summary>

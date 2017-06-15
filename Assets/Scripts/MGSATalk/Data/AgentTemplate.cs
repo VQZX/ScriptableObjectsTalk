@@ -9,23 +9,10 @@ public class AgentTemplate : ScriptableObject, IGardenData
     /// common data
     /// </summary>
 
-    public int id;
-    public int ID
-    {
-        get { return id; }
-    }
+    public int ID;
 
-    public string agentName;
+    public string AgentName;
 
-    public string Name
-    {
-        get { return agentName; }
-    }
+    public Sprite AgentImage;
 
-    public Sprite agentImage;
-
-    public Sprite Agent
-    {
-        get { return agentImage; }
-    }
 }

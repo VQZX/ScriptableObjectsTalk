@@ -4,9 +4,11 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class GardenerController : MonoBehaviour
 {
-    [SerializeField] public GardenerTemplate template;
-    [SerializeField] public new SpriteRenderer renderer;
-    [SerializeField] public new Animator animator;
+    public GardenerTemplate Template;
+    
+    public new SpriteRenderer Renderer;
+    
+    public Animator Animator;
 
     /// <summary>
     /// a callback for when the gardener is initialised to prevent any access errors
@@ -35,7 +37,7 @@ public class GardenerController : MonoBehaviour
         {
             return;
         }
-        template.UpdateGardener(this);
+        Template.UpdateGardener(this);
     }
 
     /// <summary>
@@ -44,12 +46,12 @@ public class GardenerController : MonoBehaviour
     /// <param name="template"></param>
     public void Initialize(GardenerTemplate template)
     {
-        renderer = GetComponent<SpriteRenderer>();
-        renderer.sprite = template.Agent;
-        this.template = template;
+        Renderer = GetComponent<SpriteRenderer>();
+        Renderer.sprite = template.AgentImage;
+        this.Template = template;
         if (GardenerInitialized != null)
         {
-            GardenerInitialized(template.Name);
+            GardenerInitialized(template.AgentName);
         }
         template.Init(this);
     }
@@ -59,7 +61,7 @@ public class GardenerController : MonoBehaviour
     /// </summary>
     public void Refuse()
     {
-        animator.SetBool("Refuse", true);
+        Animator.SetBool("Refuse", true);
     }
 
     /// <summary>
@@ -67,14 +69,14 @@ public class GardenerController : MonoBehaviour
     /// </summary>
     public void AcceptTend()
     {
-        animator.SetBool("Work", true);
+        Animator.SetBool("Work", true);
     }
 
     //Callack from the FlowerController when a new flower has been selecte
     private void OnFlowerSelected(FlowerController controller)
     {
-        animator.SetBool("Refuse", false);
-        animator.SetBool("Work", false);
+        Animator.SetBool("Refuse", false);
+        Animator.SetBool("Work", false);
         Debug.Log("FlowerSelected "+controller.Template.GetType());
         CurrentFlower = controller;
     }

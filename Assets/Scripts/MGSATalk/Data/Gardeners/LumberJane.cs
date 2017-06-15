@@ -6,7 +6,7 @@ namespace MGSATalk
     /// LumberJane inherits from GardenerTemplate
     /// </summary>
     ///
-    /// Attribute to make it easier to create this specific type of object
+    /// Attribute to make it easier to create this specific Type of object
     /// filename: The default file name for the asset
     /// menuName: The order within the create menu
     /// order: positioning within the create menu

@@ -4,7 +4,7 @@
 /// Bamboo class inherits from FlowerTemplate
 /// </summary>
 ///
-/// Attribute to make it easier to create this specific type of object
+/// Attribute to make it easier to create this specific Type of object
 /// filename: The default file name for the asset
 /// menuName: The order within the create menu
 /// order: positioning within the create menu
@@ -20,7 +20,7 @@ public class Bamboo : FlowerTemplate
     public override void Init(FlowerController controller)
     {
         base.Init(controller);
-        controller.NextGoalSize = nextGoalSize;
+        controller.NextGoalSize = NextGoalSize;
     }
 
     /// <summary>
@@ -32,7 +32,7 @@ public class Bamboo : FlowerTemplate
     /// <param name="controller"></param>
     public override void GardenerTendTo(FlowerController controller)
     {
-        controller.NextGoalSize += incrementPercentage;
+        controller.NextGoalSize += IncrementPercentage;
     }
 
     /// <summary>
@@ -48,7 +48,7 @@ public class Bamboo : FlowerTemplate
         Vector3 current = control.transform.localScale;
         Vector3 next = current;
         next.y = control.NextGoalSize;
-        control.transform.localScale = Vector3.Lerp(current, next, Time.deltaTime * growthSpeed);
+        control.transform.localScale = Vector3.Lerp(current, next, Time.deltaTime * GrowthSpeed);
         if (Vector3.Distance(current, next) < 0.01)
         {
             control.Growing = false;

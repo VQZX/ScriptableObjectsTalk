@@ -4,7 +4,7 @@
 /// Rose class inherits from FlowerTemplate
 /// </summary>
 ///
-/// Attribute to make it easier to create this specific type of object
+/// Attribute to make it easier to create this specific Type of object
 /// filename: The default file name for the asset
 /// menuName: The order within the create menu
 /// order: positioning within the create menu
@@ -20,7 +20,7 @@ public class Rose : FlowerTemplate
     /// <param name="controller"></param>
     public override void GardenerTendTo(FlowerController controller)
     {
-        controller.NextGoalSize += incrementPercentage;
+        controller.NextGoalSize += IncrementPercentage;
         controller.Growing = true;
     }
 
@@ -41,7 +41,7 @@ public class Rose : FlowerTemplate
         Vector3 next = current;
         next.x = control.NextGoalSize;
         next.y = control.NextGoalSize;
-        control.transform.localScale = Vector3.Lerp(current, next, Time.deltaTime * growthSpeed);
+        control.transform.localScale = Vector3.Lerp(current, next, Time.deltaTime * GrowthSpeed);
         if (Vector3.Distance(current, next) < 0.01)
         {
             control.Growing = false;
@@ -59,8 +59,8 @@ public class Rose : FlowerTemplate
         Vector3 scale = controller.transform.localScale;
         scale.x *= 0.1f;
         scale.y *= 0.1f;
-        nextGoalSize = scale.x;
-        controller.NextGoalSize = nextGoalSize;
+        NextGoalSize = scale.x;
+        controller.NextGoalSize = NextGoalSize;
         controller.transform.localScale = scale;
     }
 }
