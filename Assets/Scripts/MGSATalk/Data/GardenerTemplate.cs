@@ -9,6 +9,8 @@ namespace MGSATalk.Data
         protected bool isTendingFlower = false;
         public abstract void TendFlower(GardenerController gardener, FlowerController flower);
 
+        public Transform from;
+
         public virtual void Init(GardenerController controller)
         {
             Debug.Log("Initialized");
