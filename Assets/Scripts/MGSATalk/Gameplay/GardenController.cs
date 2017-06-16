@@ -8,14 +8,20 @@ namespace MGSATalk.Gameplay
     public class GardenController : Controller
     {
         [SerializeField] public GardenTemplate template;
-        [SerializeField] protected GameObject gardenPiece;
-        [SerializeField] protected FlowerTemplate[] flowers;
-        [SerializeField] protected GameObject flowerPiece;
-        [SerializeField] protected GardenerTemplate gardenerTemplate;
-        [SerializeField] protected GameObject gardener;
+        [SerializeField] public GameObject gardenPiece;
+        [SerializeField] public FlowerTemplate[] flowers;
+        [SerializeField]
+        public GameObject flowerPiece;
+        [SerializeField]
+        public GardenerTemplate gardenerTemplate;
+        [SerializeField]
+        public GameObject gardener;
 
         public static Action GardenInitialized;
-
+        
+        /// <summary>
+        /// GENERATE THE GARDEN ON AWAKE
+        /// </summary>
         protected virtual void Awake()
         {
             int width = template.Width;
@@ -45,6 +51,13 @@ namespace MGSATalk.Gameplay
             CreateGardener(transform.position);
         }
 
+        /// <summary>
+        /// CODE FOR ASSISTING GENERATION
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
         private GameObject Create(Vector3 pos, int x, int y)
         {
             var g =  (GameObject) Instantiate(gardenPiece, pos, Quaternion.identity);

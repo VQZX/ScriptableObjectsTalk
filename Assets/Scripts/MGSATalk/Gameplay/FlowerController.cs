@@ -46,8 +46,8 @@ namespace MGSATalk.Gameplay
 
         public void Tend()
         {
-            template.GardenerTendTo(this);
             Growing = true;
+            template.GardenerTendTo(this);
         }
     }
 }

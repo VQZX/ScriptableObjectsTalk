@@ -3,10 +3,15 @@ using UnityEngine;
 
 namespace MGSATalk.Data
 {
+    /// <summary>
+    /// Common data for Gardeners
+    /// </summary>
     public abstract class GardenerTemplate : AgentTemplate
     {
         public float speed = 5;
         protected bool isTendingFlower = false;
+
+        //code for dealing with a flower
         public abstract void TendFlower(GardenerController gardener, FlowerController flower);
 
         public Transform from;
@@ -16,6 +21,13 @@ namespace MGSATalk.Data
             Debug.Log("Initialized");
         }
 
+        /// <summary>
+        /// Basic for translating the data
+        /// This function is virtual for different gardener motions
+        /// Potentially useful for dealing obstacles/traps or distractions in the garden
+        /// (if your gardener is so way inclined)
+        /// </summary>
+        /// <param name="controller"></param>
         public virtual void UpdateGardener(GardenerController controller)
         {
             Vector3 goal = controller.CurrentFlower.transform.position;
