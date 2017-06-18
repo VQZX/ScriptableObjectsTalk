@@ -18,24 +18,6 @@ namespace MGSATalk.Data.Editor
             EditorUtility.SetDirty(referenceShape);
         }
 
-        [MenuItem("Flusk/Dungeon")]
-        static void CreatePuzzle()
-        {
-            string directory = "Assets/Low Economy - yes/Data/Shapes/";
-
-            string path = EditorUtility.SaveFilePanel("Create Dungeon Shape", directory, "dungeon.asset", "asset");
-            if (path == "")
-            {
-                return;
-            }
-
-            path = FileUtil.GetProjectRelativePath(path);
-
-            GardenTemplate dungeon = ScriptableObject.CreateInstance<GardenTemplate>();
-            AssetDatabase.CreateAsset(dungeon, path);
-            AssetDatabase.SaveAssets();
-        }
-
         
         private static int xOffset = 50;
         private static int yOffset = 50;
@@ -78,7 +60,6 @@ namespace MGSATalk.Data.Editor
             return newHeight;
         }
 
-        // Editing Single Explosion
         public  Rect InspectGardenTemplate(Rect position, ref GardenTemplate dungeon)
         {
             GUI.changed = false;
@@ -134,10 +115,7 @@ namespace MGSATalk.Data.Editor
                 }
             }
 
-            if (GUI.changed)
-            {
-                EditorUtility.SetDirty(dungeon);
-            }
+            EditorUtility.SetDirty(dungeon);
 
             return new Rect(saveOrig.x, saveOrig.y, saveOrig.width, EditorGUIUtility.singleLineHeight + (dungeon.Height * xWidth));
         }

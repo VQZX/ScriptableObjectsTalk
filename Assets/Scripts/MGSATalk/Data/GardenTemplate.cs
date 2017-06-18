@@ -12,6 +12,7 @@ using UnityEngine;
 /// menuName: The order within the create menu
 /// order: positioning within the create menu
 [CreateAssetMenu(fileName = "Garden.asset", menuName = "MGSATalk/Garden/Garden", order = 1)]
+[Serializable]
 public class GardenTemplate : ScriptableObject
 {
 
@@ -38,9 +39,10 @@ public class GardenTemplate : ScriptableObject
     [SerializeField]
     private bool[] data;
 
-    public GardenTemplate(int width, int height, bool[] data)
+    public bool[] Data
     {
-
+        get { return data; }
+        set { data = value; }
     }
 
 
@@ -84,16 +86,7 @@ public class GardenTemplate : ScriptableObject
         Height = height;
         data = new bool[Width * Height];
     }
-
-    public GardenTemplate Copy()
-    {
-        bool[] newData = data;
-        int width = Width;
-        int height = Height;
-        GardenTemplate newShape = new GardenTemplate(width, height, newData);
-        return newShape;
-    }
-
+    
     private Vector3 CalculatePosition(GameObject piece, Transform root, int x, int y)
     {
         Bounds bounds = piece.GetComponent<SpriteRenderer>().bounds;
@@ -150,5 +143,4 @@ public class GardenTemplate : ScriptableObject
         relativePosition += origin ?? Vector3.zero;
         return relativePosition;
     }
-
 }
