@@ -43,10 +43,6 @@ public class GardenTemplate : ScriptableObject
 
     }
 
-    public GardenTemplate()
-    {
-
-    }
 
     /// <summary>
     /// A function to help with the two-dimensional array
