@@ -3,7 +3,7 @@
 /// <summary>
 /// Base class for Gardeners and Flowers 
 /// </summary>
-public class AgentTemplate : ScriptableObject, IGardenData
+public class AgentTemplate : ScriptableObject
 {
     /// <summary>
     /// common data

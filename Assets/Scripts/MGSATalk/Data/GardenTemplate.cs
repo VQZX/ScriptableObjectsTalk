@@ -12,7 +12,7 @@ using UnityEngine;
 /// menuName: The order within the create menu
 /// order: positioning within the create menu
 [CreateAssetMenu(fileName = "Garden.asset", menuName = "MGSATalk/Garden/Garden", order = 1)]
-public class GardenTemplate : ScriptableObject, IGardenData
+public class GardenTemplate : ScriptableObject
 {
 
     /// <summary>
